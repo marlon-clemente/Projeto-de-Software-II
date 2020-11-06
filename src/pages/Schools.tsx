@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import mapMarket from '../assets/market.png';
+import mapMarket from '../assets/market-icon.svg';
 import Leaflet from 'leaflet';
 
 import '../styles/school.css';
@@ -11,9 +11,9 @@ import { Link } from 'react-router-dom';
 
 const mapIconMarket = Leaflet.icon({
   iconUrl: mapMarket,
-  iconSize:[68,68],
-  iconAnchor: [34, 68],
-  popupAnchor: [170, 2]
+  iconSize:[60,69],
+  iconAnchor: [30, 69],
+  popupAnchor: [170, -1]
 })
 
 
