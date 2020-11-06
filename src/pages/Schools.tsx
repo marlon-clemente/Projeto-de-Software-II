@@ -6,7 +6,7 @@ import mapMarket from '../assets/market.png';
 import Leaflet from 'leaflet';
 
 import '../styles/school.css';
-import { FiArrowRight } from 'react-icons/fi';
+import { FiArrowRight, FiSearch } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 const mapIconMarket = Leaflet.icon({
@@ -24,6 +24,10 @@ const Schools: React.FC = () => {
         <header>
           <h1>Logo</h1>
         </header>
+        <div className="input-search-school">
+          <FiSearch color="#c3c3c3" size={20} />
+          <input type="text" value="Procurar escola..."/>
+        </div>
         <footer>
           <strong>Santa Maria</strong>
           <span>Rio Grande do Sul</span>
