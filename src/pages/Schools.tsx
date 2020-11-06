@@ -1,11 +1,21 @@
 import React from 'react';
-import { FiPlus } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
 
-import { Map, TileLayer } from 'react-leaflet';
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import mapMarket from '../assets/market.png';
+import Leaflet from 'leaflet';
 
 import '../styles/school.css';
+import { FiArrowRight } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+
+const mapIconMarket = Leaflet.icon({
+  iconUrl: mapMarket,
+  iconSize:[68,68],
+  iconAnchor: [34, 68],
+  popupAnchor: [170, 2]
+})
+
 
 const Schools: React.FC = () => {
   return <>
@@ -28,6 +38,18 @@ const Schools: React.FC = () => {
         <TileLayer url={
           `https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`
         }/>
+        <Marker
+          icon={mapIconMarket}
+          position={[-29.6899828,-53.8080099]}
+        >
+          <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
+            Nome da Escola
+            <Link to="/">
+              <FiArrowRight size={20} color="#ffffff" />
+            </Link>
+          </Popup>
+        </Marker>
+        
       </Map>
 
     </div>
