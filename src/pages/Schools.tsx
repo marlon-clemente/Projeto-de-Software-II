@@ -1,23 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import mapMarket from '../assets/market-icon.svg';
-import Leaflet from 'leaflet';
 
 import '../styles/school.css';
 import { FiArrowRight, FiSearch } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
-const mapIconMarket = Leaflet.icon({
-  iconUrl: mapMarket,
-  iconSize:[60,69],
-  iconAnchor: [30, 69],
-  popupAnchor: [170, -1]
-})
+// import axios from 'axios'
+import MapIconMarket from '../utils/mapIcon';
+import axios from 'axios';
 
+interface School {
+  id: number,
+  name: string,
+  latitude: number,
+  longitude: number
+}
 
 const Schools: React.FC = () => {
+  const [school, setSchool] = useState<School[]>([]);
+
+  useEffect(() => {
+    axios.get('https://raw.githubusercontent.com/marlon-clemente/json-psII-temporario/main/school__.json')
+      .then((response)=>{
+        setSchool(response.data)
+      })
+  }, []);
+  console.log(school)
   return <>
     <div id="page-map">
       <aside>
@@ -42,18 +52,22 @@ const Schools: React.FC = () => {
         <TileLayer url={
           `https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`
         }/>
-        <Marker
-          icon={mapIconMarket}
-          position={[-29.6899828,-53.8080099]}
-        >
-          <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
-            Nome da Escola
-            <Link to="/">
-              <FiArrowRight size={20} color="#ffffff" />
-            </Link>
-          </Popup>
-        </Marker>
         
+        {
+          school.map(school=>(
+            <Marker
+              icon={MapIconMarket}
+              position={[school.longitude, school.latitude]}
+            >
+              <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
+                {school.name}
+                <Link to="/">
+                  <FiArrowRight size={20} color="#ffffff" />
+                </Link>
+              </Popup>
+            </Marker>)
+          )
+        }
       </Map>
 
     </div>
