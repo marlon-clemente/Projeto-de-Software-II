@@ -1,0 +1,51 @@
+import React from 'react';
+// import CardContato from '../components/card_contato';
+import Divider from '../components/divider';
+import Sidebar from '../components/sidebar';
+
+import { Map, TileLayer, Marker } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import MapIconMarket from '../utils/mapIcon';
+
+import { ContainerShoolShow } from '../styles/schoolShow';
+
+const SchoolShow: React.FC = () => {
+  return <ContainerShoolShow>
+    <Sidebar title="Nome da Escola">
+      <h2>Localização</h2>
+      <p>Bairro tal</p>
+      <p>Rua tal</p>
+      <Divider />
+      
+      <div className="map-container">
+        <Map
+          center={[-29.6899828,-53.8080099]}
+          zoom={15}
+          style={{ width: '100%', height:250, borderRadius: '20px 20px 0 0', position: 'relative' }}
+          dragging = {false}
+          touchZoom={false}
+          zoomControl={false}
+          scrollWheelZoom={false}
+          doubleClickZoom={false}
+        >
+          <TileLayer url={
+            `https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`
+          }/>
+          <Marker icon={MapIconMarket} position={[-29.6899828,-53.8080099]}></Marker>
+        </Map>
+        <a href="#" className="button-map">
+          Abrir rota no Google Maps
+        </a>
+      </div>
+
+      <Divider />
+      
+      <h2>Contato</h2>
+      {/* <CardContato number_phone={123456789} />
+      <CardContato email="email_contato@email.com" /> */}
+
+    </Sidebar>
+  </ContainerShoolShow>;
+}
+
+export default SchoolShow;

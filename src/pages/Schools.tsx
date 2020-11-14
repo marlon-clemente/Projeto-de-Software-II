@@ -47,7 +47,12 @@ const Schools: React.FC = () => {
       <Map
         center={[-29.6899828,-53.8080099]}
         zoom={15}
-        style={{ width: '100%', height:'100%' }}
+        style={{ width: '100%', height:280 }}
+        dragging = {false}
+        touchZoom={false}
+        zoomControl={false}
+        scrollWheelZoom={false}
+        doubleClickZoom={false}
       >
         <TileLayer url={
           `https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`
@@ -56,12 +61,13 @@ const Schools: React.FC = () => {
         {
           school.map(school=>(
             <Marker
+              key={school.id}
               icon={MapIconMarket}
               position={[school.longitude, school.latitude]}
             >
               <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
                 {school.name}
-                <Link to="/">
+                <Link to={`/app/school/${school.id}`}>
                   <FiArrowRight size={20} color="#ffffff" />
                 </Link>
               </Popup>
