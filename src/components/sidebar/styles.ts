@@ -71,12 +71,12 @@ export const Aside = styled.aside`
   @media (max-width: 768px){
     head{
       .name-school{
-        /* margin-top:3.6rem; */
         width: 90%;
       }
     }
     main{
       width: 90%;
+      padding: 2.8rem 2.4rem;
     }
   }
 `; 
