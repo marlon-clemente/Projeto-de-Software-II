@@ -1,21 +1,17 @@
 import styled from 'styled-components';
 
 export const ContainerShoolShow = styled.div`
-  h2{
+  display: flex;
+  .title{
     font: 500 2rem Roboto;
   }
 
-  p{
+  .text{
     margin-top: 2.4rem;
     font: 500 1.6rem Roboto;
     color: #4d6f80;
   }
-  .map_container{
-    width: 100%;
-    height: 250px;
-    border-radius: 20px;
-  }
-
+  
   .button-map{
     width: 100%;
     height: 48px;

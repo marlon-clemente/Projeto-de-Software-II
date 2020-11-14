@@ -2,17 +2,12 @@ import styled from 'styled-components';
 
 export const Aside = styled.aside`
   width: 100vw;
-  height: 100vh;
-  
   display: flex;
-  align-items:center;
   flex-direction: column;
-
-  overflow: scroll;
+  align-items:center;
 
   head{
-    width: 100%;
-    height: 35rem;
+    width: 100vw;
 
     display: flex;
     flex-direction: column;
@@ -25,15 +20,14 @@ export const Aside = styled.aside`
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      margin-top: 6.8rem;
-      
+      margin-top: 6.8rem;      
       max-width: 1100px;
     }
     .name-school{
       display: flex;
       align-items: flex-start;
-      
-      margin-top: 4.2rem;
+      margin-top: 8rem;
+      margin-bottom: 13.5rem;
       width: 720px;
 
       color: #ffffff;
@@ -51,8 +45,8 @@ export const Aside = styled.aside`
   }
 
   main{
-    width: 720px;
-    height: auto;
+    width: 100%;
+    max-width: 720px;
     padding: 6.4rem 7rem;
 
     margin-top: -7.2rem;
@@ -68,9 +62,33 @@ export const Aside = styled.aside`
     justify-content: start;
   }
 
+  footer {
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 1.8rem auto;
+
+    font: 700 1.4rem Roboto;
+    color: #4D6F80;
+
+    img {
+      height: 3.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+  }
+
   @media (max-width: 768px){
     head{
+      .content {
+        margin-top: 3.6rem;
+      }
       .name-school{
+        margin-bottom: 13.5rem;
+        font: 700 2.8rem Roboto;
         width: 90%;
       }
     }

@@ -1,5 +1,4 @@
 import React from 'react';
-// import CardContato from '../components/card_contato';
 import Divider from '../components/divider';
 import Sidebar from '../components/sidebar';
 
@@ -8,16 +7,18 @@ import 'leaflet/dist/leaflet.css';
 import MapIconMarket from '../utils/mapIcon';
 
 import { ContainerShoolShow } from '../styles/schoolShow';
+import { Link } from 'react-router-dom';
 
 const SchoolShow: React.FC = () => {
   return <ContainerShoolShow>
-    <Sidebar title="Nome da Escola">
-      <h2>Localização</h2>
-      <p>Bairro tal</p>
-      <p>Rua tal</p>
+   <Sidebar title="Nome da Escola">
+      <div className="title">Localização</div>
+      <div className="text">Bairro tal</div>
+      <div className="text">Rua tal</div>
+      
       <Divider />
       
-      <div className="map-container">
+      <>
         <Map
           center={[-29.6899828,-53.8080099]}
           zoom={15}
@@ -33,18 +34,22 @@ const SchoolShow: React.FC = () => {
           }/>
           <Marker icon={MapIconMarket} position={[-29.6899828,-53.8080099]}></Marker>
         </Map>
-        <a href="#" className="button-map">
+        <Link to="#" className="button-map">
           Abrir rota no Google Maps
-        </a>
-      </div>
+        </Link>
+      </>
 
       <Divider />
       
-      <h2>Contato</h2>
-      {/* <CardContato number_phone={123456789} />
-      <CardContato email="email_contato@email.com" /> */}
+      <div className="title">Contato</div>
+      <div className="title">Contato</div>
+      <div className="title">Contato</div>
 
-    </Sidebar>
+   
+      {/* {<CardContato number_phone={123456789} />
+      <CardContato email="email_contato@email.com" /> */}
+    </Sidebar> 
+       
   </ContainerShoolShow>;
 }
 

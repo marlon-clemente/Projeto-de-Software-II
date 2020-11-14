@@ -24,8 +24,13 @@ const Sidebar: React.FC<SidebarProps> = ({title, children}) => {
         </div>
         <div className="name-school">{title}</div>
       </head>
-      <main>{children}</main>
-      <footer></footer>
+      <main>
+        {children}
+      </main>
+      <footer>
+        <img src={Logo} alt="Logo"/>
+        Versão 1
+      </footer>
     </Aside>
     
   </>);
