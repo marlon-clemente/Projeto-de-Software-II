@@ -4,12 +4,13 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import '../styles/school.css';
-import { FiArrowRight, FiSearch } from 'react-icons/fi';
+import { FiArrowRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 // import axios from 'axios'
 import MapIconMarket from '../utils/mapIcon';
-import axios from 'axios';
+import api from '../services/api';
+import InputSearch from '../components/InputSearch';
 
 interface School {
   id: number,
@@ -20,24 +21,23 @@ interface School {
 
 const Schools: React.FC = () => {
   const [school, setSchool] = useState<School[]>([]);
-
+  
   useEffect(() => {
-    axios.get('https://raw.githubusercontent.com/marlon-clemente/json-psII-temporario/main/school__.json')
-      .then((response)=>{
-        setSchool(response.data)
-      })
+    getSchools();
   }, []);
-  console.log(school)
+  
+  const getSchools = async () => {
+    const { data } = await api.get('/')
+    console.log(data)
+  }
+
   return <>
     <div id="page-map">
       <aside>
         <header>
           <h1>Logo</h1>
         </header>
-        <div className="input-search-school">
-          <FiSearch color="#c3c3c3" size={20} />
-          <input type="text" value="Procurar escola..."/>
-        </div>
+        <InputSearch />
         <footer>
           <strong>Santa Maria</strong>
           <span>Rio Grande do Sul</span>
