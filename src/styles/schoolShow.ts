@@ -7,10 +7,19 @@ export const ContainerShoolShow = styled.div`
 
   .title{
     font: 500 2rem Roboto;
+    display: flex;
+    align-items: center;
+    margin: 1.2rem 0;
+    p {
+      margin-left: 1.6rem;
+    }
+    :first-child{
+      margin-top: 2.4rem;
+    }
   }
 
   .text{
-    margin-top: 2.4rem;
+    margin: 1.2rem 0;
     font: 500 1.6rem Roboto;
     color: #4d6f80;
   }
@@ -25,6 +34,8 @@ export const ContainerShoolShow = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    margin-bottom: 1.2rem;
 
     font: 700 1.4rem Roboto;
     color: #4D6F80;

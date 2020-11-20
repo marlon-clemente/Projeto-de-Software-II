@@ -6,12 +6,14 @@ import { Map, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import MapIconMarket from '../utils/mapIcon';
 import { RiShareForwardLine } from 'react-icons/ri';
+import { GrContact, GrLocation } from 'react-icons/gr';
 import { SiGooglemaps } from 'react-icons/si';
 
 import { ContainerShoolShow } from '../styles/schoolShow';
 import api from '../services/api';
 import CardContato from '../components/card_contato';
-import Button from '../components/Button';
+
+import { WhatsappShareButton }  from 'react-share';
 
 interface SchoolsParams {
   id: string;
@@ -43,14 +45,14 @@ const SchoolShow: React.FC = () => {
   }
 
   return <ContainerShoolShow><Sidebar title={school?.socialReason}>
-    <div className="title">Localização</div>
+    <div className="title"><GrLocation/><p>Localização</p></div>
     <div className="text">{school?.addressSchool}</div>
     <Divider />
 
     <Map
       center={[school.longitudeSchool, school.latitudeSchool]}
       zoom={15}
-      style={{ width: '100%', height:250, borderRadius: '20px 20px 0 0', position: 'relative' }}
+      style={{ width: '100%', height:250, borderRadius: '20px 20px 0 0', position: 'relative', marginTop: '1.2rem' }}
       dragging = {false}
       touchZoom={false}
       zoomControl={false}
@@ -63,20 +65,22 @@ const SchoolShow: React.FC = () => {
       <Marker icon={MapIconMarket} position={[school.longitudeSchool, school.latitudeSchool]}></Marker>
     </Map>
 
-    <a href={`https://www.google.com/maps/dir/?api=1&destination=${school.longitudeSchool},${school.latitudeSchool}`} className="button-map">
+    <a target="_blank" href={`https://www.google.com/maps/dir/?api=1&destination=${school.longitudeSchool},${school.latitudeSchool}`} className="button-map">
       <SiGooglemaps size="16" />
       <p>Abrir rota no Google Maps</p>
     </a>
       
     <Divider />
     
-    <div className="title">Contato</div>
+    <div className="title"><GrContact/><p>Contato</p></div>
     <CardContato number_phone={school.numberPhone} />
     <CardContato email={school.emailSchool} />
-    <Button>
-      <RiShareForwardLine />
-      <p>Compartilhar</p>
-    </Button>
+    
+    <div className="title"><RiShareForwardLine /><p>Compartilhar</p></div>
+
+    {/* <WhatsappShareButton url={'www.google.com'} disabledStyle={{ height: '48px' }} >
+      Whats
+    </WhatsappShareButton> */}
   </Sidebar></ContainerShoolShow>;
 }
 
