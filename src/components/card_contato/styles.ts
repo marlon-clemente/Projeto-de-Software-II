@@ -47,5 +47,8 @@ export const Container = styled.div`
     :hover{
       background: #A1E9C5
     }
+    :focus{
+      outline-style: none;
+    }
   }
 `;

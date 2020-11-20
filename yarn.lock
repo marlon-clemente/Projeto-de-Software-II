@@ -5639,6 +5639,11 @@ internal-slot@^1.0.2:
     has "^1.0.3"
     side-channel "^1.0.2"
 
+intersection-observer@^0.5.0:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.5.1.tgz#e340fc56ce74290fe2b2394d1ce88c4353ac6dfa"
+  integrity sha512-Zd7Plneq82kiXFixs7bX62YnuZ0BMRci9br7io88LwDyF3V43cQMI+G5IiTlTNTt+LsDUppl19J/M2Fp9UkH6g==
+
 invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
@@ -6786,6 +6791,11 @@ lodash._reinterpolate@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
   integrity sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
+
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
 
 lodash.memoize@^4.1.2:
   version "4.1.2"
@@ -8877,6 +8887,14 @@ react-clipboard.js@^2.0.16:
     "@types/clipboard" "^2.0.1"
     clipboard "^2.0.0"
     prop-types "^15.5.0"
+
+react-custom-share@^0.4.8:
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/react-custom-share/-/react-custom-share-0.4.8.tgz#a92e13fdc1098ece7b7ea46ee8e3b39adae2cacc"
+  integrity sha512-mmDjgmirwA6rYNQiPqOnfI2SfhOSn9w5RwlDUbr12lhts0CCY9soNRNidn9lUULfo9sG6zj1KmsVZ3NN8UMAQg==
+  dependencies:
+    intersection-observer "^0.5.0"
+    lodash.debounce "^4.0.8"
 
 react-dev-utils@^10.2.1:
   version "10.2.1"

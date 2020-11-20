@@ -51,4 +51,8 @@ export const ContainerShoolShow = styled.div`
       background-color: #eceeed;
     }
   }
+
+  .buttons-shared {
+    display: flex;
+  }
 `;

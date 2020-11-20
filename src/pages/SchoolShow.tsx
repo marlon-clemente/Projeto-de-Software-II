@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import Divider from '../components/divider';
-import Sidebar from '../components/sidebar';
 import { useParams } from 'react-router-dom';
 import { Map, TileLayer, Marker } from 'react-leaflet';
+
 import 'leaflet/dist/leaflet.css';
 import MapIconMarket from '../utils/mapIcon';
+import api from '../services/api';
+
 import { RiShareForwardLine } from 'react-icons/ri';
 import { GrContact, GrLocation } from 'react-icons/gr';
 import { SiGooglemaps } from 'react-icons/si';
 
-import { ContainerShoolShow } from '../styles/schoolShow';
-import api from '../services/api';
+import Sidebar from '../components/sidebar';
+import Divider from '../components/divider';
 import CardContato from '../components/card_contato';
 
-import { WhatsappShareButton }  from 'react-share';
+import { ContainerShoolShow } from '../styles/schoolShow';
+import ButtonShare from '../components/ButtonShare';
 
 interface SchoolsParams {
   id: string;
@@ -77,10 +79,15 @@ const SchoolShow: React.FC = () => {
     <CardContato email={school.emailSchool} />
     
     <div className="title"><RiShareForwardLine /><p>Compartilhar</p></div>
-
-    {/* <WhatsappShareButton url={'www.google.com'} disabledStyle={{ height: '48px' }} >
-      Whats
-    </WhatsappShareButton> */}
+    
+    <div className="buttons-shared">
+      <ButtonShare network="Twitter" link={`https://schoolsm.vercel.app/app/school/${school.id}`} />
+      <ButtonShare network="Facebook" link={`https://schoolsm.vercel.app/app/school/${school.id}`} />
+      <ButtonShare network="WhatsApp" link={`https://schoolsm.vercel.app/app/school/${school.id}`} />
+      <ButtonShare network="Email" link={`https://schoolsm.vercel.app/app/school/${school.id}`} />
+      <ButtonShare network="More" link={`https://schoolsm.vercel.app/app/school/${school.id}`} />
+    </div>
+  
   </Sidebar></ContainerShoolShow>;
 }
 
