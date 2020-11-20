@@ -7,7 +7,7 @@ import { Aside } from './styles';
 import Logo from '../../assets/logo.svg';
 
 interface SidebarProps {
-  title: string;
+  title?: string;
   children?: ReactNode;
 }
 

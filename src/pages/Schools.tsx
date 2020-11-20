@@ -12,11 +12,13 @@ import MapIconMarket from '../utils/mapIcon';
 import api from '../services/api';
 import InputSearch from '../components/InputSearch';
 
+import Logo from '../assets/logo.svg';
+
 interface School {
   id: number,
-  name: string,
-  latitude: number,
-  longitude: number
+  socialReason: string,
+  latitudeSchool: number,
+  longitudeSchool: number,
 }
 
 const Schools: React.FC = () => {
@@ -27,15 +29,15 @@ const Schools: React.FC = () => {
   }, []);
   
   const getSchools = async () => {
-    const { data } = await api.get('/')
-    console.log(data)
+    const { data } = await api.get('/schools')
+    setSchool(data)
   }
 
   return <>
     <div id="page-map">
       <aside>
         <header>
-          <h1>Logo</h1>
+          <img src={Logo} alt="Logo"/>
         </header>
         <InputSearch />
         <footer>
@@ -54,20 +56,22 @@ const Schools: React.FC = () => {
         }/>
         
         {
-          school.map(school=>(
-            <Marker
-              key={school.id}
-              icon={MapIconMarket}
-              position={[school.longitude, school.latitude]}
-            >
-              <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
-                {school.name}
-                <Link to={`/app/school/${school.id}`}>
-                  <FiArrowRight size={20} color="#ffffff" />
-                </Link>
-              </Popup>
-            </Marker>)
-          )
+          school.map((school)=>(
+          <> {console.log(school.socialReason)} </>
+            
+            // <Marker
+            //   key={school.id}
+            //   icon={MapIconMarket}
+            //   position={[school.longitudeSchool, school.latitudeSchool]}
+            // >
+            //   <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
+            //     {school.socialReason}
+            //     <Link to={`/app/school/${school.id}`}>
+            //       <FiArrowRight size={20} color="#ffffff" />
+            //     </Link>
+            //   </Popup>
+            // </Marker>
+          ))
         }
       </Map>
 

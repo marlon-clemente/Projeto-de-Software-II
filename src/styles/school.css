@@ -20,6 +20,13 @@
 
 #page-map aside header {
   margin-right: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#page-map aside header img {
+  height: 3.5rem;
 }
 
 #page-map aside .input-search-school {
