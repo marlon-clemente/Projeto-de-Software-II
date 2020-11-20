@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 export const ContainerShoolShow = styled.div`
   display: flex;
+  width: 100%;
+  height: 100%;
+
   .title{
     font: 500 2rem Roboto;
   }
@@ -28,9 +31,13 @@ export const ContainerShoolShow = styled.div`
 
     cursor: pointer;
     transition: 0.2s;
+    
+    p {
+      margin-left: 0.8rem;
+    }
 
     :hover{
-      /* background-color: red; */
+      background-color: #eceeed;
     }
   }
 `;

@@ -55,24 +55,22 @@ const Schools: React.FC = () => {
           `https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`
         }/>
         
-        {
-          school.map((school)=>(
-          <> {console.log(school.socialReason)} </>
-            
-            // <Marker
-            //   key={school.id}
-            //   icon={MapIconMarket}
-            //   position={[school.longitudeSchool, school.latitudeSchool]}
-            // >
-            //   <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
-            //     {school.socialReason}
-            //     <Link to={`/app/school/${school.id}`}>
-            //       <FiArrowRight size={20} color="#ffffff" />
-            //     </Link>
-            //   </Popup>
-            // </Marker>
-          ))
-        }
+        {school.map((school, index)=>(<>{
+          index < 25 && (
+            <Marker
+              key={school.id}
+              icon={MapIconMarket}
+              position={[school.longitudeSchool, school.latitudeSchool]}
+            >
+              <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
+                {school.socialReason}
+                <Link to={`/app/school/${school.id}`}>
+                  <FiArrowRight size={20} color="#ffffff" />
+                </Link>
+              </Popup>
+            </Marker>
+            )
+        }</>))}
       </Map>
 
     </div>

@@ -6,9 +6,10 @@ export const Aside = styled.aside`
   flex-direction: column;
   align-items:center;
 
+  
+
   head{
     width: 100vw;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,10 +47,13 @@ export const Aside = styled.aside`
 
   main{
     width: 100%;
+    height: auto;
     max-width: 720px;
     padding: 6.4rem 7rem;
-
+    
     margin-top: -7.2rem;
+
+    overflow: hidden;
 
     color: #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
