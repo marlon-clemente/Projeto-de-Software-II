@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { Map, TileLayer, Marker } from 'react-leaflet';
 
 import 'leaflet/dist/leaflet.css';
@@ -34,13 +34,17 @@ interface School {
 const SchoolShow: React.FC = () => {
   const params = useParams<SchoolsParams>();
   const [school, setSchool] = useState<School>();
+  const history = useHistory();
 
   useEffect(() => {
     api.get(`/schools/${params.id}`)
     .then((res)=>{
       setSchool(res.data)
     })
-  }, [params.id]);
+    .catch((res)=>{
+      history.push(`/schools/${params.id}`)
+    })
+  }, [history, params.id]);
 
   if(!school){
     return <p>ret</p>

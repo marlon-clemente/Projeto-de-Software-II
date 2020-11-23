@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Error404 from './pages/404';
 import Landing from './pages/Landing';
 import Schools from './pages/Schools';
 import School from './pages/SchoolShow';
@@ -11,6 +12,7 @@ const Routes = () =>{
         <Route path="/" component={Landing} exact />
         <Route path="/app" component={Schools} exact/>
         <Route path="/app/school/:id" component={School} />
+        <Route component={Error404} />
       </Switch>
     </BrowserRouter>
   )
