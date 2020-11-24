@@ -71,7 +71,7 @@ const SchoolShow: React.FC = () => {
       <Marker icon={MapIconMarket} position={[school.longitudeSchool, school.latitudeSchool]}></Marker>
     </Map>
 
-    <a target="_blank" href={`https://www.google.com/maps/dir/?api=1&destination=${school.longitudeSchool},${school.latitudeSchool}`} className="button-map">
+    <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${school.longitudeSchool},${school.latitudeSchool}`} className="button-map">
       <SiGooglemaps size="16" />
       <p>Abrir rota no Google Maps</p>
     </a>
@@ -85,11 +85,11 @@ const SchoolShow: React.FC = () => {
     <div className="title"><RiShareForwardLine /><p>Compartilhar</p></div>
     
     <div className="buttons-shared">
-      <ButtonShare network="Twitter" link={`https://schoolsm.vercel.app/app/school/${school.id}`} />
-      <ButtonShare network="Facebook" link={`https://schoolsm.vercel.app/app/school/${school.id}`} />
-      <ButtonShare network="WhatsApp" link={`https://schoolsm.vercel.app/app/school/${school.id}`} />
-      <ButtonShare network="Email" link={`https://schoolsm.vercel.app/app/school/${school.id}`} />
-      <ButtonShare network="More" link={`https://schoolsm.vercel.app/app/school/${school.id}`} />
+      <ButtonShare network="Twitter"/>
+      <ButtonShare network="Facebook"/>
+      <ButtonShare network="WhatsApp"/>
+      <ButtonShare network="Email"/>
+      <ButtonShare network="More"/>
     </div>
   
   </Sidebar></ContainerShoolShow>;

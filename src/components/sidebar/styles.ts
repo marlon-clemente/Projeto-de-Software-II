@@ -8,7 +8,7 @@ export const Aside = styled.aside`
 
   
 
-  head{
+  .head-sidebar-map{
     width: 100vw;
     display: flex;
     flex-direction: column;

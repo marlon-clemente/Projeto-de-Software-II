@@ -1,5 +1,17 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const ContainerSearchInput = styled.div`
   
+
+  .searchImput{
+    
+    
+    
+  }
+  
+  
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;

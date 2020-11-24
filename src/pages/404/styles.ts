@@ -20,7 +20,7 @@ export const ContainerPage404 = styled.div`
     text-align: center;
   }
   .erro-404 {
-    font-size: 32rem;
+    font-size: 8rem;
   }
   .enter-return {
     width: 35rem;

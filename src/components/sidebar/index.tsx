@@ -14,7 +14,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({title, children}) => {
   return (<>
     <Aside>
-      <head>
+      <div className="head-sidebar-map">
         <div className="content">
           <Link to="/app">
             <FiArrowLeft size="22" />
@@ -23,7 +23,7 @@ const Sidebar: React.FC<SidebarProps> = ({title, children}) => {
           <img src={Logo} alt="Logo"/>
         </div>
         <div className="name-school">{title}</div>
-      </head>
+      </div>
       <main>
         {children}
       </main>
