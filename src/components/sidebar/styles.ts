@@ -45,7 +45,7 @@ export const Aside = styled.aside`
     }
   }
 
-  main{
+  .main-sidebar-show-school{
     width: 100%;
     height: auto;
     max-width: 720px;
@@ -86,7 +86,7 @@ export const Aside = styled.aside`
   }
 
   @media (max-width: 768px){
-    head{
+    .head-sidebar-map{
       .content {
         margin-top: 3.6rem;
       }
@@ -96,7 +96,7 @@ export const Aside = styled.aside`
         width: 90%;
       }
     }
-    main{
+    .main-sidebar-show-school{
       width: 90%;
       padding: 2.8rem 2.4rem;
     }

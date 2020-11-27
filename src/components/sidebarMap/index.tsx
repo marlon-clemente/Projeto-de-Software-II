@@ -36,7 +36,7 @@ const SidebarMap: React.FC<InterfaceSidebarMap> = ({children, schools}) => {
   }, [value, schools]);
 
   return <ContainerSidebarMap>
-    <header>
+    <div className="header-sidebar">
       <img src={Logo} alt=""/>
       <div className="search">
         <div className="searchInput">
@@ -51,22 +51,17 @@ const SidebarMap: React.FC<InterfaceSidebarMap> = ({children, schools}) => {
 
         {
           isVisibleDrop && (
-            <ul>
-              {
-                schoolFiltered.length > 0 ? (
-                  <DropdownList schoolsFilter={schoolFiltered} value={value} />) : (
-                  <p>Escola não encontrada</p>
-                )
-              }
-            </ul>
-          )
+            schoolFiltered.length > 0 ? (
+              <DropdownList schoolsFilter={schoolFiltered} value={value} />) : (
+              <p>Escola não encontrada</p>
+          ))
         }
       </div>
       <div className="location-header">
         <strong>Santa Maria</strong>
         <span>Rio Grande do Sul</span>
       </div>
-    </header>
+    </div>
     <section>
       {children}
     </section>

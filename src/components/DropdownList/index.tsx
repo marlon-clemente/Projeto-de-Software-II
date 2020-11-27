@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { InterfaceSchool } from '../../interface';
 
-import { Container } from './styles';
+import { ContainerDropdownList } from './styles';
 
 interface InterfaceDropList {
   schoolsFilter : InterfaceSchool[],
@@ -10,13 +10,15 @@ interface InterfaceDropList {
 }
 
 const DropdownList: React.FC<InterfaceDropList> = ({schoolsFilter, value}) => {
-  return(<>
+  return(<ContainerDropdownList>
     {
       schoolsFilter.map((item:InterfaceSchool)=>(
-        <Link key={item.id} to={`app/school/${item.id}`}>{item.socialReason}</Link>
+        <div className="iten-school-list">
+          <Link key={item.id} to={`app/school/${item.id}`}>{item.socialReason}</Link>
+        </div>
       ))
     }
-  </>);
+  </ContainerDropdownList>);
 }
 
 export default DropdownList;
