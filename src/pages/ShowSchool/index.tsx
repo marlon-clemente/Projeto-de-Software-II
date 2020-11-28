@@ -3,19 +3,20 @@ import { useHistory, useParams } from 'react-router-dom';
 import { Map, TileLayer, Marker } from 'react-leaflet';
 
 import 'leaflet/dist/leaflet.css';
-import MapIconMarket from '../utils/mapIcon';
-import api from '../services/api';
+import MapIconMarket from '../../utils/mapIcon';
+import api from '../../services/api';
 
 import { RiShareForwardLine } from 'react-icons/ri';
 import { GrContact, GrLocation } from 'react-icons/gr';
 import { SiGooglemaps } from 'react-icons/si';
 
-import Sidebar from '../components/sidebar';
-import Divider from '../components/divider';
-import CardContato from '../components/card_contato';
+import Sidebar from '../../components/sidebar';
+import Divider from '../../components/divider';
+import CardContato from '../../components/card_contato';
 
-import { ContainerShoolShow } from '../styles/schoolShow';
-import ButtonShare from '../components/ButtonShare';
+import { ContainerShoolShow } from './styled';
+import ButtonShare from '../../components/ButtonShare';
+import Alert from '../../components/Alert';
 
 interface SchoolsParams {
   id: string;
@@ -34,6 +35,7 @@ interface School {
 const SchoolShow: React.FC = () => {
   const params = useParams<SchoolsParams>();
   const [school, setSchool] = useState<School>();
+  const [isShowInfo, setIsShowInfo] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
@@ -48,6 +50,10 @@ const SchoolShow: React.FC = () => {
 
   if(!school){
     return <p>ret</p>
+  }
+
+  const handleClickOnShowInfo = () => {
+    setIsShowInfo(!isShowInfo);
   }
 
   return <ContainerShoolShow><Sidebar title={school?.socialReason}>
@@ -78,6 +84,16 @@ const SchoolShow: React.FC = () => {
       
     <Divider />
     
+    <div className="box-recommendation-schools">
+      <div className="title-rs"><GrContact/><p>Indicações</p></div>
+      <div className="button-show-info-recommendation-schools"
+        onClick={handleClickOnShowInfo}>
+        { isShowInfo ? (<p>Fechar</p>) : (<p>O que são indicações</p>)}
+        
+      </div>
+    </div>
+    { isShowInfo && (<Alert type="alert" text="As indicações são..." />)}
+
     <div className="title"><GrContact/><p>Contato</p></div>
     <CardContato number_phone={school.numberPhone} />
     <CardContato email={school.emailSchool} />
