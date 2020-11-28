@@ -6,14 +6,14 @@ import { ContainerDropdownList } from './styles';
 
 interface InterfaceDropList {
   schoolsFilter : InterfaceSchool[],
-  value: string
+  value : string
 }
 
 const DropdownList: React.FC<InterfaceDropList> = ({schoolsFilter, value}) => {
   return(<ContainerDropdownList>
     {
       schoolsFilter.map((item:InterfaceSchool)=>(
-        <div className="iten-school-list">
+        <div className="iten-school-list" key={item.id}>
           <Link key={item.id} to={`app/school/${item.id}`}>{item.socialReason}</Link>
         </div>
       ))

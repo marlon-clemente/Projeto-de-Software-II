@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 // import axios from 'axios'
 import MapIconMarket from '../utils/mapIcon';
 import api from '../services/api';
-import InputSearch from '../components/InputSearch';
 
 import Logo from '../assets/logo.svg';
 
@@ -39,7 +38,6 @@ const Schools: React.FC = () => {
         <header>
           <img src={Logo} alt="Logo"/>
         </header>
-        <InputSearch />
         <footer>
           <strong>Santa Maria</strong>
           <span>Rio Grande do Sul</span>

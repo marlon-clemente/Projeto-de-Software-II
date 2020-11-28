@@ -6,6 +6,7 @@ import Logo from '../../assets/logo.svg';
 import { FiSearch } from 'react-icons/fi';
 import { InterfaceSchool } from '../../interface';
 import DropdownList from '../DropdownList';
+import DropdownListNull from '../DropdownList/void';
 
 interface InterfaceSidebarMap {
   children?: ReactNode;
@@ -39,7 +40,8 @@ const SidebarMap: React.FC<InterfaceSidebarMap> = ({children, schools}) => {
     <div className="header-sidebar">
       <img src={Logo} alt=""/>
       <div className="search">
-        <div className="searchInput">
+        <div className={ !isVisibleDrop ? (`searchInput`) : (`search-selected`)}>
+        {/* <div className="searchInput"> */}
           <FiSearch color="#c3c3c3" size={20} />
           <input 
             type="text"
@@ -52,10 +54,11 @@ const SidebarMap: React.FC<InterfaceSidebarMap> = ({children, schools}) => {
         {
           isVisibleDrop && (
             schoolFiltered.length > 0 ? (
-              <DropdownList schoolsFilter={schoolFiltered} value={value} />) : (
-              <p>Escola não encontrada</p>
-          ))
+              <DropdownList schoolsFilter={schoolFiltered} value={value} />) : 
+              (<DropdownListNull />)
+          )
         }
+
       </div>
       <div className="location-header">
         <strong>Santa Maria</strong>

@@ -17,11 +17,16 @@ export const ContainerDropdownList = styled.div`
   border-radius: 0 0 12px 12px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
+  p{
+    margin: 1.2rem 2.4rem;
+    text-decoration: none;
+    color: #000000;
+    font: 500 1.6rem Roboto;
+  }
+
   .iten-school-list{
     display: flex;
     align-items: center;
-
-    height: 512px;
     width:100%;
 
     :hover{
