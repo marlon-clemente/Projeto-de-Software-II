@@ -9,6 +9,7 @@
     "axios": "^0.21.0",
     "leaflet": "^1.7.1",
     "react": "^16.13.1",
+    "react-alert": "^7.0.2",
     "react-clipboard.js": "^2.0.16",
     "react-custom-share": "^0.4.8",
     "react-dom": "^16.13.1",

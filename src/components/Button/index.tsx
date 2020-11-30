@@ -1,13 +1,14 @@
-import React, { ReactNode } from 'react';
+import React, { HTMLAttributes, ReactNode } from 'react';
 
 import { ContainerButton } from './styles';
 
-interface ButtonProps {
-  children?: ReactNode;
+interface ButtonProps extends HTMLAttributes<HTMLDivElement> {
+  children?: ReactNode,
+  gradient ?: any
 }
 
-const Button: React.FC<ButtonProps> = ({children}) => {
-  return <ContainerButton>
+const Button: React.FC<ButtonProps> = ({children, ...rest}) => {
+  return <ContainerButton { ...rest } >
     {children}
   </ContainerButton>;
 }

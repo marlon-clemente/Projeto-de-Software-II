@@ -17,6 +17,7 @@ import CardContato from '../../components/card_contato';
 import { ContainerShoolShow } from './styled';
 import ButtonShare from '../../components/ButtonShare';
 import Alert from '../../components/Alert';
+import Recommendation from '../../components/Recommendation';
 
 interface SchoolsParams {
   id: string;
@@ -36,6 +37,7 @@ const SchoolShow: React.FC = () => {
   const params = useParams<SchoolsParams>();
   const [school, setSchool] = useState<School>();
   const [isShowInfo, setIsShowInfo] = useState(false);
+  // const [isRecommendation, setIsRecommendation] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
@@ -84,15 +86,16 @@ const SchoolShow: React.FC = () => {
       
     <Divider />
     
-    <div className="box-recommendation-schools">
+    <div className="header-recommendation-schools">
       <div className="title-rs"><GrContact/><p>Indicações</p></div>
       <div className="button-show-info-recommendation-schools"
         onClick={handleClickOnShowInfo}>
         { isShowInfo ? (<p>Fechar</p>) : (<p>O que são indicações</p>)}
-        
       </div>
     </div>
     { isShowInfo && (<Alert type="alert" text="As indicações são..." />)}
+    
+    <Recommendation noneRecommendation={true} />
 
     <div className="title"><GrContact/><p>Contato</p></div>
     <CardContato number_phone={school.numberPhone} />

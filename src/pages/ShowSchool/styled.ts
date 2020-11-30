@@ -43,7 +43,7 @@ export const ContainerShoolShow = styled.div`
     display: flex;
   }
 
-  .box-recommendation-schools{
+  .header-recommendation-schools{
     width: 100%;
     height: auto;
     display: flex;
@@ -75,7 +75,6 @@ export const ContainerShoolShow = styled.div`
       }
     }
   }
-
   .title{
     font: 500 2rem Roboto;
     display: flex;
