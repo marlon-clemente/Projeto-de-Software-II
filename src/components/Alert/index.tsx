@@ -1,18 +1,21 @@
 import React from 'react';
-import { FaInfo } from 'react-icons/fa';
+import { AlertComponentPropsWithStyle } from 'react-alert';
+import { FiCornerUpRight, FiInfo } from 'react-icons/fi';
+import { RiErrorWarningFill } from 'react-icons/ri';
 
-import { AlertContainer } from './styles';
+import { AlertContainerDiv } from './styles';
 
-interface Alertinterface {
-  type: string;
-  text: string;
-}
+const Alert: React.FC<AlertComponentPropsWithStyle> = ({ message, options, close }) => {
 
-const Alert: React.FC<Alertinterface> = ({type, text}) => {
-  return <AlertContainer>
-    <FaInfo color="#3782C7" />
-    <p>{text}</p>
-  </AlertContainer>;
+  return (
+    <AlertContainerDiv>
+      {options.type === 'info' && <FiInfo />}
+      {options.type === 'success' && <FiCornerUpRight />}
+      {options.type === 'error' && <RiErrorWarningFill />}
+      <span style={{ flex: 2, marginLeft: '16px'}}>{message}</span>
+      <div onClick={close} className="button-alert" />
+    </AlertContainerDiv>
+  )
 }
 
 export default Alert;

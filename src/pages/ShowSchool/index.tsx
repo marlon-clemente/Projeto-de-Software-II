@@ -16,7 +16,7 @@ import CardContato from '../../components/card_contato';
 
 import { ContainerShoolShow } from './styled';
 import ButtonShare from '../../components/ButtonShare';
-import Alert from '../../components/Alert';
+import Info from '../../components/Info';
 import Recommendation from '../../components/Recommendation';
 
 interface SchoolsParams {
@@ -93,7 +93,7 @@ const SchoolShow: React.FC = () => {
         { isShowInfo ? (<p>Fechar</p>) : (<p>O que são indicações</p>)}
       </div>
     </div>
-    { isShowInfo && (<Alert type="alert" text="As indicações são..." />)}
+    { isShowInfo && (<Info type="alert" text="As indicações são..." />)}
     
     <Recommendation noneRecommendation={true} />
 
