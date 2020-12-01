@@ -91,7 +91,7 @@ const SchoolShow: React.FC = () => {
       <ButtonShare network="Facebook"/>
       <ButtonShare network="WhatsApp"/>
       <ButtonShare network="Email"/>
-      <ButtonShare network="More"/>
+      {/* <ButtonShare network="More"/> */}
     </div>
   
   </Sidebar></ContainerShoolShow>;

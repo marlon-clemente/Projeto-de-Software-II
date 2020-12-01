@@ -22,7 +22,7 @@ const CardContato: React.FC<Contact> = ({number_phone, email, children}) => {
     </div>
     <Clipboard data-clipboard-text={number_phone ? number_phone : email}
       className="copy" onClick={ () => {
-        alert.show('Informação copiada para sua área de transferencia')
+        alert.show('Informação copiada para sua área de transferência')
       }}>
       <p>Clique para copiar para área de transferência</p>
     </Clipboard>
