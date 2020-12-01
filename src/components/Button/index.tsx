@@ -4,7 +4,9 @@ import { ContainerButton } from './styles';
 
 interface ButtonProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode,
-  gradient ?: any
+  gradient ?: any,
+  facebook ?: any,
+  google ?: any,
 }
 
 const Button: React.FC<ButtonProps> = ({children, ...rest}) => {

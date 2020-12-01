@@ -36,4 +36,36 @@ export const ContainerRecommendation = styled.div`
     }
   }
 
+  .new-box-recommendation {
+    width: 100%;
+    margin: 1.2rem 0;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align:center;
+
+    border: 1px #4D6F80;
+    border-radius: 20px;
+
+    background-color: #eceeed;
+
+    .buttons-box-new-recommendation{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    strong {
+      padding: 1.6rem;
+      font: 700 1.8rem Ubuntu;
+    }
+    
+    span {
+      font: 500 1.8rem Ubuntu;
+      padding: 1.6rem;
+    }
+  }
+
 `;

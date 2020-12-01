@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../Button';
-
-import { useAlert } from 'react-alert';
 
 import { ContainerRecommendation } from './styles';
 
@@ -11,8 +9,13 @@ interface RecommendationInterface {
 }
 
 const Recommendation: React.FC<RecommendationInterface> = ({ noneRecommendation, numberRecommendation }) => {
-  const alert = useAlert();
-  if (noneRecommendation){
+  const [isNewRecommendation, setIsNewRecommendation] = useState(false);
+
+  const handleNewRecommendation = () =>{
+    setIsNewRecommendation(!isNewRecommendation)
+  }
+
+  if (noneRecommendation && !isNewRecommendation){
     return (<>
       <ContainerRecommendation>
         <div className="none-recommendation">
@@ -20,13 +23,27 @@ const Recommendation: React.FC<RecommendationInterface> = ({ noneRecommendation,
           <strong>Seja o primeiro a indica-la</strong>
         </div>
       </ContainerRecommendation>
-      <Button gradient onClick={ ()=> {alert.show('Em futuras atualizações')}}>
+      <Button gradient onClick={handleNewRecommendation}>
         Realizar indicação
       </Button>
     </>)
   }
 
-  return <div />;
+  return (
+    <>
+      { isNewRecommendation && (<>
+      <ContainerRecommendation>
+        <div className="new-box-recommendation">
+          <strong>Nova indicação</strong>
+          <span>Você deve usar uma das seguntes
+            contas para realizar uma indicação</span>
+        </div>
+      </ContainerRecommendation>  
+      <Button google>Indicar usando o Google</Button>
+      <Button facebook>Indicar usando o Facebook</Button>
+      </>)}
+    </>
+  );
 }
 
 export default Recommendation;

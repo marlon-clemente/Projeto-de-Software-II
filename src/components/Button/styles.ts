@@ -15,6 +15,8 @@ export const ContainerButton = styled.div<{ gradient ?: boolean }>`
   cursor: pointer;
   transition: 0.6s;
 
+  font-family: Roboto;
+
   ${(props:any) =>
     props.gradient ?
     css`
@@ -23,6 +25,28 @@ export const ContainerButton = styled.div<{ gradient ?: boolean }>`
       
       :hover{
         background: linear-gradient(139.9deg, #01ada9 21.43%, #67e093 63.8%);
+      } 
+    ` : 
+    props.facebook ?
+    css`
+      background: #507cbe;
+      color: #f7f7f7;
+      
+      :hover{
+        color: #507cbe;
+        border: 1px solid #507cbe;
+        background: #f7f7f7;
+      } 
+    ` : 
+    props.google ?
+    css`
+      background: #DB4437;
+      color: #f7f7f7;
+      
+      :hover{
+        color: #DB4437;
+        border: 1px solid #DB4437;
+        background: #f7f7f7;
       } 
     ` : 
     css`
