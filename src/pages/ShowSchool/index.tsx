@@ -62,7 +62,6 @@ const SchoolShow: React.FC = () => {
   return <ContainerShoolShow><Sidebar title={school?.socialReason}>
     <div className="title"><GrLocation/><p>Localização</p></div>
     <div className="text">{school?.addressSchool}</div>
-    
     <Divider />
 
     <MapSchool latitude={school.latitudeSchool} longitude={school.longitudeSchool}/>
@@ -77,12 +76,12 @@ const SchoolShow: React.FC = () => {
       </div>
     </div>
     { isShowInfo && (<Info type="alert" text="As indicações são..." />)}
-    
     <Recommendation noneRecommendation={true} />
 
     <div className="title"><GrContact/><p>Contato</p></div>
     <CardContato number_phone={school.numberPhone} />
     <CardContato email={school.emailSchool} />
+
     
     <div className="title"><RiShareForwardLine /><p>Compartilhar</p></div>
     
@@ -91,7 +90,6 @@ const SchoolShow: React.FC = () => {
       <ButtonShare network="Facebook"/>
       <ButtonShare network="WhatsApp"/>
       <ButtonShare network="Email"/>
-      {/* <ButtonShare network="More"/> */}
     </div>
   
   </Sidebar></ContainerShoolShow>;

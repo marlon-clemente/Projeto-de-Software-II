@@ -4,7 +4,7 @@ export const ContainerShoolShow = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
-
+  
   .text{
     margin: 1.2rem 0;
     font: 500 1.6rem Roboto;

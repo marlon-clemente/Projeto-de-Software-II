@@ -29,7 +29,7 @@ const Sidebar: React.FC<SidebarProps> = ({title, children}) => {
       </div>
       <footer>
         <img src={Logo} alt="Logo"/>
-        Versão 1
+        <span> Versão 1 </span>
       </footer>
     </Aside>
     

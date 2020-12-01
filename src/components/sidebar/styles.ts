@@ -5,9 +5,7 @@ export const Aside = styled.aside`
   display: flex;
   flex-direction: column;
   align-items:center;
-
   
-
   .head-sidebar-map{
     width: 100vw;
     display: flex;
@@ -47,13 +45,10 @@ export const Aside = styled.aside`
 
   .main-sidebar-show-school{
     width: 100%;
-    height: auto;
-    max-width: 720px;
+    max-width: 72rem;
     padding: 6.4rem 7rem;
     
     margin-top: -7.2rem;
-
-    overflow: hidden;
 
     color: #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -73,7 +68,7 @@ export const Aside = styled.aside`
     align-items: center;
     justify-content: center;
 
-    margin: 1.8rem auto;
+    margin: 2.4rem auto;
 
     font: 700 1.4rem Roboto;
     color: #4D6F80;
@@ -81,6 +76,10 @@ export const Aside = styled.aside`
     img {
       height: 3.5rem;
       margin-bottom: 0.6rem;
+    }
+
+    span {
+      margin-bottom: 1.8rem;
     }
 
   }

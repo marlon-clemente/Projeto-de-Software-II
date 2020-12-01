@@ -65,9 +65,9 @@ const SidebarMap: React.FC<InterfaceSidebarMap> = ({children, schools}) => {
         <span>Rio Grande do Sul</span>
       </div>
     </div>
-    <section>
+    <div className="page-show-content">
       {children}
-    </section>
+    </div>
   </ContainerSidebarMap>;
 }
 

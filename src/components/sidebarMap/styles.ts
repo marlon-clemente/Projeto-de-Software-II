@@ -8,7 +8,7 @@ export const ContainerSidebarMap = styled.div`
 
   .header-sidebar {
     background: linear-gradient(329.54deg, #67e093 0%, #01ada9 100%);
-    width: 100%;
+    width: 100vw;
     height: 9rem;
 
     padding: 0 10%;
@@ -41,7 +41,7 @@ export const ContainerSidebarMap = styled.div`
   } /* [end] - header-sidebar */
 
 
-  section{
+  .page-show-content{
     width: 100%;
     height: 100%;
   }
