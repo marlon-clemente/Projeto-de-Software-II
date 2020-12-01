@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { Map, TileLayer, Marker } from 'react-leaflet';
+
+
 
 import 'leaflet/dist/leaflet.css';
-import MapIconMarket from '../../utils/mapIcon';
+
 import api from '../../services/api';
 
 import { RiShareForwardLine } from 'react-icons/ri';
 import { GrContact, GrLocation } from 'react-icons/gr';
-import { SiGooglemaps } from 'react-icons/si';
 
 import Sidebar from '../../components/sidebar';
 import Divider from '../../components/divider';
@@ -18,6 +18,7 @@ import { ContainerShoolShow } from './styled';
 import ButtonShare from '../../components/ButtonShare';
 import Info from '../../components/Info';
 import Recommendation from '../../components/Recommendation';
+import MapSchool from '../../components/MapSchool';
 
 interface SchoolsParams {
   id: string;
@@ -61,29 +62,11 @@ const SchoolShow: React.FC = () => {
   return <ContainerShoolShow><Sidebar title={school?.socialReason}>
     <div className="title"><GrLocation/><p>Localização</p></div>
     <div className="text">{school?.addressSchool}</div>
+    
     <Divider />
 
-    <Map
-      center={[school.longitudeSchool, school.latitudeSchool]}
-      zoom={15}
-      style={{ width: '100%', height:250, borderRadius: '20px 20px 0 0', position: 'relative', marginTop: '1.2rem' }}
-      dragging = {false}
-      touchZoom={false}
-      zoomControl={false}
-      scrollWheelZoom={false}
-      doubleClickZoom={false}
-    >
-      <TileLayer url={
-        `https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`
-      }/>
-      <Marker icon={MapIconMarket} position={[school.longitudeSchool, school.latitudeSchool]}></Marker>
-    </Map>
+    <MapSchool latitude={school.latitudeSchool} longitude={school.longitudeSchool}/>
 
-    <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${school.longitudeSchool},${school.latitudeSchool}`} className="button-map">
-      <SiGooglemaps size="16" />
-      <p>Abrir rota no Google Maps</p>
-    </a>
-      
     <Divider />
     
     <div className="header-recommendation-schools">

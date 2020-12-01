@@ -4,6 +4,8 @@ export const ContainerRecommendation = styled.div`
   width: 100%;
   height: auto;
 
+  margin: 1.2rem 0;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +21,8 @@ export const ContainerRecommendation = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    text-align: center;
+    padding: 0 2rem;
     span {
       font: 500 1.4rem Roboto;
       margin-top: 1.6rem; 
@@ -29,7 +32,7 @@ export const ContainerRecommendation = styled.div`
       margin-top: 0.8rem;
       margin-bottom: 1.6rem;
       color: #4D6F80;
-      font: 800 2.0rem Roboto; 
+      font: 800 1.8rem Roboto; 
     }
   }
 

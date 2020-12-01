@@ -12,7 +12,7 @@ body {
   height: 100vh;
   color: #ffffff;
   background: #eceeed;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 body,

@@ -23,6 +23,9 @@ interface School {
 const Schools: React.FC = () => {
   const [school, setSchool] = useState<School[]>([]);
   
+ 
+
+
   useEffect(() => {
     getSchools();
   }, []);
@@ -33,16 +36,19 @@ const Schools: React.FC = () => {
   }
 
   return <SidebarMap schools={school}>
-      <div id="page-map">
+
+    <div id="page-map">
       <Map
         center={[-29.6899828,-53.8080099]}
         zoom={15}
-        style={{ width: '100%', height:'100%' }}
+        style={{ width: '100%', height:'100%'}}
       >
         <TileLayer url={
           `https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`
         }/>
         
+
+
         {school.map((school, index)=>(<>{
           index < 25 && (
             <Marker
@@ -60,7 +66,9 @@ const Schools: React.FC = () => {
             )
         }</>))}
       </Map>
-
+        <div className="my-location-popup">
+          L
+        </div>
     </div>
     </SidebarMap>;
 }

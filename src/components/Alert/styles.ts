@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const AlertContainerDiv = styled.div`
-  width: 100%;
+  width: 90%;
+  max-width: 700px;
 
   background: #def0d8;
   color: #4D6F80;
@@ -21,7 +22,7 @@ export const AlertContainerDiv = styled.div`
   font: 500 1.6rem Roboto;
 
   box-sizing: border-box;
-  
+
   .button-alert{
     margin: 0 2rem;
     border: none;
