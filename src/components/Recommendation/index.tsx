@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useAlert } from 'react-alert';
 import Button from '../Button';
 
 import { ContainerRecommendation } from './styles';
@@ -9,6 +10,7 @@ interface RecommendationInterface {
 }
 
 const Recommendation: React.FC<RecommendationInterface> = ({ noneRecommendation, numberRecommendation }) => {
+  const alert = useAlert();
   const [isNewRecommendation, setIsNewRecommendation] = useState(false);
 
   const handleNewRecommendation = () =>{
@@ -35,12 +37,12 @@ const Recommendation: React.FC<RecommendationInterface> = ({ noneRecommendation,
       <ContainerRecommendation>
         <div className="new-box-recommendation">
           <strong>Nova indicação</strong>
-          <span>Você deve usar uma das seguntes
+          <span>Você deve usar uma das seguintes
             contas para realizar uma indicação</span>
         </div>
       </ContainerRecommendation>  
-      <Button google>Indicar usando o Google</Button>
-      <Button facebook>Indicar usando o Facebook</Button>
+      <Button google onClick={()=>{ alert.show('Em futuras atualizações') }}>Indicar usando o Google</Button>
+      <Button facebook onClick={()=>{ alert.show('Em futuras atualizações') }}>Indicar usando o Facebook</Button>
       </>)}
     </>
   );

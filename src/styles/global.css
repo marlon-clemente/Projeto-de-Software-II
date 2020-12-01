@@ -8,6 +8,7 @@
   height: 100vh;
   display: flex;
   font-size: 62.5%;
+  user-select: none;
 }
 
 body {
