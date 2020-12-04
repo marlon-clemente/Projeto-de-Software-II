@@ -76,7 +76,7 @@ const SchoolShow: React.FC = () => {
       </div>
     </div>
     { isShowInfo && (<Info type="alert" text="As indicações são..." />)}
-    <Recommendation noneRecommendation={true} />
+    <Recommendation noneRecommendation={true} numberRecommendation={school.id} />
 
     <div className="title"><GrContact/><p>Contato</p></div>
     <CardContato number_phone={school.numberPhone} />

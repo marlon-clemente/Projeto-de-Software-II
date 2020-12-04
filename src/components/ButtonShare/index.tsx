@@ -17,11 +17,11 @@ interface ButtonShare {
 
 const ButtonShare: React.FC<ButtonShare> = ( {network} ) => {
   
-  const url = '#';
+  const url = window.location.href;
 
   if (network === 'Twitter'){
     return (
-    <TwitterShareButton 
+    <TwitterShareButton
       style={{
         width: '48px',
         height: '48px',

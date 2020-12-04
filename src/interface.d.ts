@@ -4,3 +4,9 @@ export interface InterfaceSchool {
   latitudeSchool: number,
   longitudeSchool: number,
 }
+
+export interface InterfaceUser {
+  id: string,
+  name: string,
+  photoUrl: string
+}
