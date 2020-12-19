@@ -72,6 +72,12 @@ export const ContainerSidebarMap = styled.div`
           outline: none;
         }
       }
+      span {
+        color: #c3c3c3;
+        :hover {
+          cursor: pointer;
+        }
+      }
 
     }
 

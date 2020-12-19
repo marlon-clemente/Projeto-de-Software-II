@@ -7,6 +7,7 @@ import { FiSearch } from 'react-icons/fi';
 import { InterfaceSchool } from '../../interface';
 import DropdownList from '../DropdownList';
 import DropdownListNull from '../DropdownList/void';
+import { spawn } from 'child_process';
 
 interface InterfaceSidebarMap {
   children?: ReactNode;
@@ -26,6 +27,11 @@ const SidebarMap: React.FC<InterfaceSidebarMap> = ({children, schools}) => {
 
   const changeResultVisible = (value: string)=>{
     setIsVisibleDrop(value.length >= 3)
+  }
+
+  const handleClear = () => {
+    setValue('');
+    setIsVisibleDrop(false);
   }
 
   useEffect(() => {
@@ -49,6 +55,7 @@ const SidebarMap: React.FC<InterfaceSidebarMap> = ({children, schools}) => {
             onChange={handleChange}
             placeholder="Procurar escola..."
           />
+          { isVisibleDrop && (<span onClick={handleClear}>Limpar</span>) }
         </div>
 
         {

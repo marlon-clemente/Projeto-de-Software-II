@@ -72,16 +72,20 @@ const SchoolShow: React.FC = () => {
       <div className="title-rs"><GrContact/><p>Indicações</p></div>
       <div className="button-show-info-recommendation-schools"
         onClick={handleClickOnShowInfo}>
-        { isShowInfo ? (<p>Fechar</p>) : (<p>O que são indicações</p>)}
+        { isShowInfo ? (<p>X Fechar</p>) : (<p>O que são indicações</p>)}
       </div>
     </div>
-    { isShowInfo && (<Info type="alert" text="As indicações são..." />)}
+    { isShowInfo && (<Info type="alert">
+      As <b>indicações</b> mostram o quanto a escola 
+      necessita de ajuda. Ao realizar uma indicação você
+      concorda que a escola está apta a receber doações de
+      materiais escolares.</Info> 
+    )}
     <Recommendation noneRecommendation={true} numberRecommendation={school.id} />
 
     <div className="title"><GrContact/><p>Contato</p></div>
     <CardContato number_phone={school.numberPhone} />
     <CardContato email={school.emailSchool} />
-
     
     <div className="title"><RiShareForwardLine /><p>Compartilhar</p></div>
     

@@ -7,6 +7,7 @@ import { FiArrowRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 import MapIconMarket from '../../utils/mapIcon';
+import MapIconMarketMyLocation from '../../utils/mapIconMyLocation';
 import api from '../../services/api';
 
 import SidebarMap from '../../components/sidebarMap';
@@ -69,7 +70,7 @@ const Schools: React.FC = () => {
         {
           location.loaded && !location.error && (
             <Marker
-              icon={MapIconMarket}
+              icon={MapIconMarketMyLocation}
               position={[location.coordinates.lat, location.coordinates.lng]}>
 
             </Marker>

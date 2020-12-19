@@ -1,6 +1,6 @@
 import Leaflet from 'leaflet'
 
-import mapMarket from '../assets/market-icon-my-location.svg'
+import mapMarket from '../assets/myLocationIcon.svg'
 
 const MapIconMarket = Leaflet.icon({
   iconUrl: mapMarket,

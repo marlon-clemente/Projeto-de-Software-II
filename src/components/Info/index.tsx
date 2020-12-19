@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { FaInfo } from 'react-icons/fa';
 
 import { AlertContainer } from './styles';
 
 interface Alertinterface {
   type: string;
-  text: string;
+  children?: ReactNode;
 }
 
-const Alert: React.FC<Alertinterface> = ({type, text}) => {
+const Alert: React.FC<Alertinterface> = ({type, children}) => {
   return <AlertContainer>
     <FaInfo color="#3782C7" />
-    <p>{text}</p>
+    <p>
+      {children}
+    </p>
   </AlertContainer>;
 }
 

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const AlertContainer = styled.div`
   width: 100%;
-  height: 64px;
+  min-height: 64px;
   margin: 1.2rem 0;
   display: flex;
   align-items: center;
@@ -14,8 +14,12 @@ export const AlertContainer = styled.div`
   box-sizing: border-box;
   border-radius: 20px;
 
-  p {
+  > p {
     color: #3782C7;
-    margin-left: 1.6rem;
+    margin: 1.6rem;
+    font-weight: 500;
+    > b {
+      font-weight: 800;
+    }
   }
 `;
