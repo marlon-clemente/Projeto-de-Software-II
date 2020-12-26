@@ -1,81 +1,84 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from "react";
 
-import { ContainerSidebarMap } from './styles';
+import { ContainerSidebarMap } from "./styles";
 
-import Logo from '../../assets/logo.svg';
-import { FiSearch } from 'react-icons/fi';
-import { InterfaceSchool } from '../../interface';
-import DropdownList from '../DropdownList';
-import DropdownListNull from '../DropdownList/void';
-import { spawn } from 'child_process';
+import Logo from "../../assets/logo.svg";
+import { FiSearch } from "react-icons/fi";
+import { InterfaceSchool } from "../../interface";
+import DropdownList from "../DropdownList";
+import DropdownListNull from "../DropdownList/void";
+import { spawn } from "child_process";
 
 interface InterfaceSidebarMap {
   children?: ReactNode;
-  schools: Array<InterfaceSchool>
+  schools: Array<InterfaceSchool>;
 }
 
-const SidebarMap: React.FC<InterfaceSidebarMap> = ({children, schools}) => {
+const SidebarMap: React.FC<InterfaceSidebarMap> = ({ children, schools }) => {
   const [isVisibleDrop, setIsVisibleDrop] = useState(false);
-  const [value, setValue] = useState('');
-  const [schoolFiltered, setSchoolFiltered ] = useState<Array<InterfaceSchool>>([]);
+  const [value, setValue] = useState("");
+  const [schoolFiltered, setSchoolFiltered] = useState<Array<InterfaceSchool>>(
+    []
+  );
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setValue(value);
     changeResultVisible(value);
-  }
+  };
 
-  const changeResultVisible = (value: string)=>{
-    setIsVisibleDrop(value.length >= 3)
-  }
+  const changeResultVisible = (value: string) => {
+    setIsVisibleDrop(value.length >= 3);
+  };
 
   const handleClear = () => {
-    setValue('');
+    setValue("");
     setIsVisibleDrop(false);
-  }
+  };
 
   useEffect(() => {
-    if (value.length >= 3 && schools){
+    if (value.length >= 3 && schools) {
+      const val = value.toLowerCase();
       setSchoolFiltered(
-        schools.filter((sc: InterfaceSchool) => sc.socialReason.toLowerCase().includes(value))
-      )
+        schools.filter((sc: InterfaceSchool) =>
+          sc.socialReason.toLowerCase().includes(val)
+        )
+      );
     }
   }, [value, schools]);
 
-  return <ContainerSidebarMap>
-    <div className="header-sidebar">
-      <img src={Logo} alt=""/>
-      <div className="search">
-        <div className={ !isVisibleDrop ? (`searchInput`) : (`search-selected`)}>
-        {/* <div className="searchInput"> */}
-          <FiSearch color="#c3c3c3" size={20} />
-          <input 
-            type="text"
-            value={value}
-            onChange={handleChange}
-            placeholder="Procurar escola..."
-          />
-          { isVisibleDrop && (<span onClick={handleClear}>Limpar</span>) }
+  return (
+    <ContainerSidebarMap>
+      <div className="header-sidebar">
+        <img src={Logo} alt="" />
+        <div className="search">
+          <div className={!isVisibleDrop ? `searchInput` : `search-selected`}>
+            {/* <div className="searchInput"> */}
+            <FiSearch color="#c3c3c3" size={20} />
+            <input
+              type="text"
+              value={value}
+              onChange={handleChange}
+              placeholder="Procurar escola..."
+            />
+            {isVisibleDrop && <span onClick={handleClear}>Limpar</span>}
+          </div>
+
+          {isVisibleDrop &&
+            (schoolFiltered.length > 0 ? (
+              <DropdownList schoolsFilter={schoolFiltered} value={value} />
+            ) : (
+              <DropdownListNull />
+            ))}
         </div>
-
-        {
-          isVisibleDrop && (
-            schoolFiltered.length > 0 ? (
-              <DropdownList schoolsFilter={schoolFiltered} value={value} />) : 
-              (<DropdownListNull />)
-          )
-        }
-
+        <div className="location-header">
+          <strong>Santa Maria</strong>
+          <span>Rio Grande do Sul</span>
+        </div>
       </div>
-      <div className="location-header">
-        <strong>Santa Maria</strong>
-        <span>Rio Grande do Sul</span>
-      </div>
-    </div>
-    <div className="page-show-content">
-      {children}
-    </div>
-  </ContainerSidebarMap>;
-}
+      <div className="page-show-content">{children}</div>
+    </ContainerSidebarMap>
+  );
+};
 
 export default SidebarMap;
