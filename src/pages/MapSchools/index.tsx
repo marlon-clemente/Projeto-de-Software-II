@@ -1,27 +1,27 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
+import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
-import { FiArrowRight } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { FiArrowRight } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
-import MapIconMarket from '../../utils/mapIcon';
-import MapIconMarketMyLocation from '../../utils/mapIconMyLocation';
-import api from '../../services/api';
+import MapIconMarket from "../../utils/mapIcon";
+import MapIconMarketMyLocation from "../../utils/mapIconMyLocation";
+import api from "../../services/api";
 
-import SidebarMap from '../../components/sidebarMap';
+import SidebarMap from "../../components/sidebarMap";
 
-import './styles.css';
-import useGeoLocation from '../../hooks/useGeoLocation';
-import { useAlert } from 'react-alert';
-import { RiUserLocationFill } from 'react-icons/ri';
+import "./styles.css";
+import useGeoLocation from "../../hooks/useGeoLocation";
+import { useAlert } from "react-alert";
+import { RiUserLocationFill } from "react-icons/ri";
 
 interface School {
-  id: number,
-  socialReason: string,
-  latitudeSchool: number,
-  longitudeSchool: number,
+  id: number;
+  socialReason: string;
+  latitudeSchool: number;
+  longitudeSchool: number;
 }
 
 const Schools: React.FC = () => {
@@ -30,75 +30,86 @@ const Schools: React.FC = () => {
   const location = useGeoLocation();
   const alert = useAlert();
 
-
   const showMyLocation = () => {
-    if (location.loaded && !location.error 
-      && location.coordinates.lat !== 0){
+    if (location.loaded && !location.error && location.coordinates.lat !== 0) {
       mapRef.current?.leafletElement.flyTo(
         [location.coordinates.lat, location.coordinates.lng],
         16,
         {
-          animate: true
+          animate: true,
         }
-      )
+      );
     } else {
-      alert.show(location.error?.message)
+      alert.show(location.error?.message);
     }
-  }
+  };
 
   useEffect(() => {
-    getSchools();
-  }, []);
-  
-  const getSchools = async () => {
-    const { data } = await api.get('/schools')
-    setSchool(data)
-  }
-  
-  return <SidebarMap schools={school}>
-    <div id="page-map">
-      <Map
-        center={[-29.6899828,-53.8080099]}
-        zoom={15}
-        style={{ width: '100%', height:'100%'}}
-        ref={mapRef}
-      >
-        <TileLayer url={
-          `https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`
-        }/>
-        
-        {
-          location.loaded && !location.error && (
+    const fetchSchool = async () => {
+      await api
+        .get("/schools")
+        .then((res) => {
+          setSchool(res.data);
+        })
+        .catch((err) => {
+          alert.show(
+            "Estamos com dificuldade de conexão! Por favor! Tente novamente mais tarde"
+          );
+        });
+    };
+    fetchSchool();
+  });
+
+  return (
+    <SidebarMap schools={school}>
+      <div id="page-map">
+        <Map
+          center={[-29.6899828, -53.8080099]}
+          zoom={15}
+          style={{ width: "100%", height: "100%" }}
+          ref={mapRef}
+        >
+          <TileLayer
+            url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
+          />
+
+          {location.loaded && !location.error && (
             <Marker
               icon={MapIconMarketMyLocation}
-              position={[location.coordinates.lat, location.coordinates.lng]}>
+              position={[location.coordinates.lat, location.coordinates.lng]}
+            ></Marker>
+          )}
 
-            </Marker>
-          )
-        }
-
-        {school.map((school, index)=>(<>{
-          index < 25 && (
-            <Marker
-            key={school.id}
-              icon={MapIconMarket}
-              position={[school.longitudeSchool, school.latitudeSchool]}
-            >
-              <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
-                {school.socialReason}
-                <Link to={`/app/school/${school.id}`}>
-                  <FiArrowRight size={20} color="#ffffff" />
-                </Link>
-              </Popup>
-            </Marker>
-            )
-        }</>))}
-      </Map>
+          {school.map((school, index) => (
+            <>
+              {index < 25 && (
+                <Marker
+                  key={school.id}
+                  icon={MapIconMarket}
+                  position={[school.longitudeSchool, school.latitudeSchool]}
+                >
+                  <Popup
+                    closeButton={false}
+                    minWidth={240}
+                    maxWidth={240}
+                    className="map-popup"
+                  >
+                    {school.socialReason}
+                    <Link to={`/app/school/${school.id}`}>
+                      <FiArrowRight size={20} color="#ffffff" />
+                    </Link>
+                  </Popup>
+                </Marker>
+              )}
+            </>
+          ))}
+        </Map>
         <div className="my-location-popup" onClick={showMyLocation}>
           <RiUserLocationFill size={25} />
         </div>
-    </div>
-    </SidebarMap>;
-}
+      </div>
+    </SidebarMap>
+  );
+};
 
 export default Schools;
