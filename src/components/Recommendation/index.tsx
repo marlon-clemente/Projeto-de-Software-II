@@ -12,7 +12,7 @@ interface RecommendationInterface {
 }
 
 const Recommendation: React.FC<RecommendationInterface> = ({ idSchool }) => {
-  const [recommendation, setRecommendation] = useState<number>();
+  const [recommendation, setRecommendation] = useState<number>(0);
   const alert = useAlert();
   const { period } = usePeriod();
 
@@ -54,6 +54,7 @@ const Recommendation: React.FC<RecommendationInterface> = ({ idSchool }) => {
             })
             .then((res) => {
               console.log(res);
+              setRecommendation(recommendation + 1);
               alert.show("Indicação realizada com sucesso!");
             })
             .catch((err) => {
