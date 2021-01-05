@@ -1,18 +1,18 @@
-import React, {ReactNode} from 'react';
-import { FiArrowLeft } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import React, { ReactNode } from "react";
+import { FiArrowLeft } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
-import { Aside } from './styles';
+import { Aside } from "./styles";
 
-import Logo from '../../assets/logo.svg';
+import Logo from "../../assets/logo.svg";
 
 interface SidebarProps {
   title?: string;
   children?: ReactNode;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({title, children}) => {
-  return (<>
+const Sidebar: React.FC<SidebarProps> = ({ title, children }) => {
+  return (
     <Aside>
       <div className="head-sidebar-map">
         <div className="content">
@@ -20,20 +20,17 @@ const Sidebar: React.FC<SidebarProps> = ({title, children}) => {
             <FiArrowLeft size="22" />
             Voltar ao mapa
           </Link>
-          <img src={Logo} alt="Logo"/>
+          <img src={Logo} alt="Logo" />
         </div>
         <div className="name-school">{title}</div>
       </div>
-      <div className="main-sidebar-show-school">
-        {children}
-      </div>
+      <div className="main-sidebar-show-school">{children}</div>
       <footer>
-        <img src={Logo} alt="Logo"/>
+        <img src={Logo} alt="Logo" />
         <span> Versão 1 </span>
       </footer>
     </Aside>
-    
-  </>);
-}
+  );
+};
 
 export default Sidebar;

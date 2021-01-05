@@ -1,28 +1,27 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Aside = styled.aside`
-  width: 100vw;
   display: flex;
   flex-direction: column;
-  align-items:center;
-  
-  .head-sidebar-map{
+  align-items: center;
+
+  .head-sidebar-map {
     width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
     background: linear-gradient(139.9deg, #67e093 21.43%, #01ada9 63.8%);
-    
-    .content{
+
+    .content {
       width: 90%;
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      margin-top: 6.8rem;      
+      margin-top: 6.8rem;
       max-width: 1100px;
     }
-    .name-school{
+    .name-school {
       display: flex;
       align-items: flex-start;
       margin-top: 8rem;
@@ -32,8 +31,8 @@ export const Aside = styled.aside`
       color: #ffffff;
       font: 700 3.8rem Roboto;
     }
-    a{
-      display: flex; 
+    a {
+      display: flex;
       align-items: center;
       justify-content: space-between;
       text-decoration: none;
@@ -43,18 +42,18 @@ export const Aside = styled.aside`
     }
   }
 
-  .main-sidebar-show-school{
+  .main-sidebar-show-school {
     width: 100%;
     max-width: 72rem;
     padding: 6.4rem 7rem;
-    
+
     margin-top: -7.2rem;
 
     color: #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     background: #ffffff;
     border-radius: 20px;
-    
+
     display: flex;
     flex-direction: column;
     align-items: initial;
@@ -71,7 +70,7 @@ export const Aside = styled.aside`
     margin: 2.4rem auto;
 
     font: 700 1.4rem Roboto;
-    color: #4D6F80;
+    color: #4d6f80;
 
     img {
       height: 3.5rem;
@@ -81,23 +80,22 @@ export const Aside = styled.aside`
     span {
       margin-bottom: 1.8rem;
     }
-
   }
 
-  @media (max-width: 768px){
-    .head-sidebar-map{
+  @media (max-width: 768px) {
+    .head-sidebar-map {
       .content {
         margin-top: 3.6rem;
       }
-      .name-school{
+      .name-school {
         margin-bottom: 13.5rem;
         font: 700 2.8rem Roboto;
         width: 90%;
       }
     }
-    .main-sidebar-show-school{
+    .main-sidebar-show-school {
       width: 90%;
       padding: 2.8rem 2.4rem;
     }
   }
-`; 
+`;

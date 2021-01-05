@@ -1,137 +1,89 @@
-import { auth, googleProvider, recommendation as recomDb } from '../../services/firebase';
-import React, { useEffect, useState } from 'react';
+import { auth, googleProvider } from "../../services/firebase";
+import React, { useEffect, useState } from "react";
 
-import Button from '../Button';
-
-import { ContainerRecommendation } from './styles';
-import { useAlert } from 'react-alert';
+import Button from "../Button";
+import usePeriod from "../../hooks/usePeriod";
+import { ContainerRecommendation } from "./styles";
+import { useAlert } from "react-alert";
+import api from "../../services/api";
 
 interface RecommendationInterface {
-	noneRecommendation ?: boolean,
-	numberRecommendation ?: number
+  idSchool?: number;
 }
 
-interface InterfaceUser {
-	id?: string,
-	name?: string,
-	photoUrl?: string 
-} 
+const Recommendation: React.FC<RecommendationInterface> = ({ idSchool }) => {
+  const [recommendation, setRecommendation] = useState<number>();
+  const alert = useAlert();
+  const { period } = usePeriod();
 
-const Recommendation: React.FC<RecommendationInterface> = ({ noneRecommendation, numberRecommendation }) => {
-	const [isNewRecommendation, setIsNewRecommendation] = useState(false);
-	const [recommendation, setRecommendation] = useState<Array<string>>([]);
-	const alert = useAlert();
-	const [user, setUser] = useState<InterfaceUser >({
-		id: '',
-		name: '',
-		photoUrl: ''
-	});
-	
-	const handleNewRecommendation = () =>{
-		setIsNewRecommendation(!isNewRecommendation)
-	}
+  useEffect(() => {
+    async function fetchData() {
+      const { data } = await api.get(`/indications/${idSchool}/${period}`);
+      if (data.length == 0) {
+        setRecommendation(0);
+      } else {
+        setRecommendation(data[0].indications);
+      }
+    }
+    fetchData();
+  }, [idSchool, period]);
 
-	const handleGoogle = () => {
-		auth.signInWithPopup(googleProvider)
-			.then((res)=>{
-				setUser({
-					id: res.user?.uid || 'ind',
-					name: res.user?.displayName || 'ind',
-					photoUrl: res.user?.photoURL || 'ind'
-				})
-				alert.show('Sua indicação foi computada com sucesso!')
-				
-			})
-			.catch((error)=>{
-				console.log(error)
-				alert.show("Erro")
-			})
-	}
-	
-	const getRecommendation = () => {
-		recomDb.on('value', (snap)=> {
-			let ar: Array<string> = [];
-			let item = snap.val();
-			let ids = numberRecommendation; 
+  const handleGoogle = async () => {
+    await auth
+      .signInWithPopup(googleProvider)
+      .then((res) => {
+        try {
+          // criar um usuario
+          api
+            .post("/user_apps", {
+              urlPhoto: res.user?.photoURL,
+              username: res.user?.displayName,
+              uid: res.user?.uid,
+            })
+            .then((res) => {
+              console.log("[Ok] -> Novo usuário criado");
+            })
+            .catch((res) => console.log("[Ok] -> O usuário já existe"));
 
-			for (let i in item){
-				if( item[i].idSchool === ids) {
-					ar.push(item[i].user)
-				}
-			}
+          // criar indicaçao
+          api
+            .post("/indications", {
+              school_id: idSchool,
+              uid: res.user?.uid,
+              period: period,
+            })
+            .then((res) => {
+              console.log(res);
+              alert.show("Indicação realizada com sucesso!");
+            })
+            .catch((err) => {
+              console.log(err);
+              alert.show(
+                "Você já realizou anteriormente uma indicação a essa escola!"
+              );
+            });
+        } catch {
+          alert.show("Ocorreu um erro");
+          return;
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert.show("A autenticação foi interrompida! Tente novamente");
+      });
+  };
 
-			setRecommendation(ar)
-		})
-	}
-
-	useEffect(() => {
-		getRecommendation();
-		if(user.id !== ''){
-			recomDb.push({
-				idSchool: numberRecommendation,
-				user: user.id
-			})
-		}
-	}, [user]);
-
-
-	if (recommendation.length < 0){
-		return (<ContainerRecommendation>
-			<div className="none-recommendation">
-				<span>Aguarde...</span>
-			</div>
-		</ContainerRecommendation>)
-	}
-
-	if (recommendation.length === 0 && !isNewRecommendation){
-		return (<>
-			<ContainerRecommendation>
-				<div className="none-recommendation">
-					<span>Não há indicações para essa escola no momento</span>
-					<strong>Seja o primeiro a indica-la</strong>
-				</div>
-			</ContainerRecommendation>
-			<Button gradient onClick={handleNewRecommendation}>
-				Realizar indicação
-			</Button>
-		</>)
-	}
-
-	if (recommendation.length >= 1 && !isNewRecommendation){
-		return (<>
-			<ContainerRecommendation>
-				<div className="none-recommendation">
-					{
-						recommendation.length === 1 ? (
-							<strong>1 indicação</strong>
-						) : (
-							<strong>{recommendation.length} indicações</strong>
-						)
-					}
-				</div>
-			</ContainerRecommendation>
-			<Button gradient onClick={handleNewRecommendation}>
-				Realizar indicação
-			</Button>
-		</>)
-	}
-
-	return (
-		<>
-			{ isNewRecommendation && (<>
-			<ContainerRecommendation>
-				<div className="new-box-recommendation">
-					<strong>Nova indicação</strong>
-					<span>Você deve usar uma das seguintes
-						contas para realizar uma indicação</span>
-				</div>
-			</ContainerRecommendation>  
-
-			<Button google onClick={handleGoogle}>Indicar usando o Google</Button>
-			{/* <Button facebook onClick={()=>{ alert.show('Em futuras atualizações') }}>Indicar usando o Facebook</Button> */}
-			</>)}
-		</>
-	);
-}
+  return (
+    <ContainerRecommendation>
+      <span>{recommendation}</span>
+      <h4>INDICAÇÕES</h4>
+      <p>Realize agora uma nova indicação</p>
+      <Button google onClick={handleGoogle}>
+        Indicar usando o Google
+      </Button>
+      <Button facebook>Indicar usando o Facebook</Button>
+    </ContainerRecommendation>
+  );
+};
 
 export default Recommendation;

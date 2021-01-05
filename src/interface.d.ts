@@ -1,12 +1,12 @@
 export interface InterfaceSchool {
-  id: number,
-  socialReason: string,
-  latitudeSchool: number,
-  longitudeSchool: number,
+  id: number;
+  socialReason: string;
+  latitudeSchool: number;
+  longitudeSchool: number;
 }
 
 export interface InterfaceUser {
-  id: string,
-  name: string,
-  photoUrl: string
+  uid: string;
+  name: string;
+  photoUrl: string;
 }

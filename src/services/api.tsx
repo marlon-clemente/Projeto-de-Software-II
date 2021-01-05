@@ -1,8 +1,7 @@
-import axio from 'axios';
+import axio from "axios";
 
 const api = axio.create({
-  baseURL : 'https://ps2-schools.herokuapp.com'
-  // baseURL : 'http://127.0.0.1:3333'
-})
+  baseURL: "https://ps2-schools.herokuapp.com",
+});
 
 export default api;
