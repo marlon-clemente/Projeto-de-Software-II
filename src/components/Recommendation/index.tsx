@@ -9,24 +9,18 @@ import api from "../../services/api";
 
 interface RecommendationInterface {
   idSchool?: number;
+  numberIndication: number;
 }
 
-const Recommendation: React.FC<RecommendationInterface> = ({ idSchool }) => {
-  const [recommendation, setRecommendation] = useState<number>(0);
+const Recommendation: React.FC<RecommendationInterface> = ({
+  idSchool,
+  numberIndication,
+}) => {
+  const [recommendation, setRecommendation] = useState<number>(
+    numberIndication
+  );
   const alert = useAlert();
   const { period } = usePeriod();
-
-  useEffect(() => {
-    async function fetchData() {
-      const { data } = await api.get(`/indications/${idSchool}/${period}`);
-      if (data.length == 0) {
-        setRecommendation(0);
-      } else {
-        setRecommendation(data[0].indications);
-      }
-    }
-    fetchData();
-  }, [idSchool, period]);
 
   const handleGoogle = async () => {
     await auth

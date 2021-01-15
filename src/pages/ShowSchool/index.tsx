@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 import "leaflet/dist/leaflet.css";
@@ -17,6 +17,7 @@ import ButtonShare from "../../components/ButtonShare";
 import Info from "../../components/Info";
 import Recommendation from "../../components/Recommendation";
 import MapSchool from "../../components/MapSchool";
+import Loading from "../../components/Loading";
 
 interface SchoolsParams {
   id: string;
@@ -30,6 +31,7 @@ interface School {
   emailSchool: string;
   addressSchool: string;
   numberPhone: string;
+  indications: number;
 }
 
 const SchoolShow: React.FC = () => {
@@ -40,18 +42,18 @@ const SchoolShow: React.FC = () => {
 
   useEffect(() => {
     api
-      .get(`/schools/${params.id}`)
+      .get(`/indications/${params.id}/2021`)
       .then((res) => {
         setSchool(res.data);
       })
       .catch((res) => {
-        history.push(`/schools/${params.id}`);
+        history.push(`/indications/${params.id}/2021`);
       });
-    console.log("carregou");
+    console.log("[debug] render pageShowSchool");
   }, [history, params.id]);
 
   if (!school) {
-    return <p>Aguarde</p>;
+    return <Loading />;
   }
 
   const handleClickOnShowInfo = () => {
@@ -94,7 +96,15 @@ const SchoolShow: React.FC = () => {
             receber doações de materiais escolares.
           </Info>
         )}
-        <Recommendation idSchool={school.id} />
+
+        {school.indications === undefined ? (
+          <Recommendation idSchool={school.id} numberIndication={0} />
+        ) : (
+          <Recommendation
+            idSchool={school.id}
+            numberIndication={school.indications}
+          />
+        )}
 
         <div className="title">
           <GrContact />

@@ -26,6 +26,7 @@ interface School {
 
 const Schools: React.FC = () => {
   const [school, setSchool] = useState<School[]>([]);
+  const [showHoverLocationButton, setShowHoverLocationButton] = useState(false);
   const mapRef = useRef<Map>(null);
   const location = useGeoLocation();
   const alert = useAlert();
@@ -57,8 +58,13 @@ const Schools: React.FC = () => {
           );
         });
     };
+    console.log("[debug] render pageMap");
     fetchSchool();
-  });
+  }, [alert]);
+
+  const hoverButtonLocation = () => {
+    setShowHoverLocationButton(!showHoverLocationButton);
+  };
 
   return (
     <SidebarMap schools={school}>
@@ -104,7 +110,17 @@ const Schools: React.FC = () => {
             </>
           ))}
         </Map>
-        <div className="my-location-popup" onClick={showMyLocation}>
+        {showHoverLocationButton && (
+          <div className="my-location-popup-info">
+            <span>Minha localização</span>
+          </div>
+        )}
+        <div
+          className="my-location-popup"
+          onMouseOver={() => setShowHoverLocationButton(true)}
+          onMouseOut={() => setShowHoverLocationButton(false)}
+          onClick={showMyLocation}
+        >
           <RiUserLocationFill size={25} />
         </div>
       </div>

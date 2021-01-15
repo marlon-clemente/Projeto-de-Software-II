@@ -7,7 +7,6 @@ import { FiSearch } from "react-icons/fi";
 import { InterfaceSchool } from "../../interface";
 import DropdownList from "../DropdownList";
 import DropdownListNull from "../DropdownList/void";
-import { spawn } from "child_process";
 
 interface InterfaceSidebarMap {
   children?: ReactNode;
