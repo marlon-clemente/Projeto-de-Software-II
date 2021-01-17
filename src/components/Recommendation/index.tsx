@@ -70,6 +70,7 @@ const Recommendation: React.FC<RecommendationInterface> = ({
 
   return (
     <ContainerRecommendation>
+      {console.log(typeof numberIndication)}
       <span>{recommendation}</span>
       <h4>INDICAÇÕES</h4>
       <p>Realize agora uma nova indicação</p>

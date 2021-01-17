@@ -47,7 +47,7 @@ const SchoolShow: React.FC = () => {
         setSchool(res.data);
       })
       .catch((res) => {
-        history.push(`/indications/${params.id}/2021`);
+        history.push(`/error`);
       });
     console.log("[debug] render pageShowSchool");
   }, [history, params.id]);
@@ -97,14 +97,12 @@ const SchoolShow: React.FC = () => {
           </Info>
         )}
 
-        {school.indications === undefined ? (
-          <Recommendation idSchool={school.id} numberIndication={0} />
-        ) : (
-          <Recommendation
-            idSchool={school.id}
-            numberIndication={school.indications}
-          />
-        )}
+        <Recommendation
+          idSchool={school.id}
+          numberIndication={
+            school.indications === undefined ? 0 : Number(school.indications)
+          }
+        />
 
         <div className="title">
           <GrContact />
