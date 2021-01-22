@@ -48,7 +48,7 @@ const Schools: React.FC = () => {
   useEffect(() => {
     const fetchSchool = async () => {
       await api
-        .get("/schools")
+        .get("/schools/2021/2021")
         .then((res) => {
           setSchool(res.data);
         })
