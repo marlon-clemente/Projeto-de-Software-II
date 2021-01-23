@@ -7,6 +7,7 @@ import { FiArrowRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 import MapIconMarket from "../../utils/mapIcon";
+import MapIconElevate from "../../utils/ElevateIndications";
 import MapIconMarketMyLocation from "../../utils/mapIconMyLocation";
 import api from "../../services/api";
 
@@ -22,6 +23,7 @@ interface School {
   socialReason: string;
   latitudeSchool: number;
   longitudeSchool: number;
+  indications: string | null;
 }
 
 const Schools: React.FC = () => {
@@ -62,10 +64,6 @@ const Schools: React.FC = () => {
     fetchSchool();
   }, [alert]);
 
-  const hoverButtonLocation = () => {
-    setShowHoverLocationButton(!showHoverLocationButton);
-  };
-
   return (
     <SidebarMap schools={school}>
       <div id="page-map">
@@ -89,23 +87,31 @@ const Schools: React.FC = () => {
           {school.map((school, index) => (
             <>
               {index < 25 && (
-                <Marker
-                  key={school.id}
-                  icon={MapIconMarket}
-                  position={[school.longitudeSchool, school.latitudeSchool]}
-                >
-                  <Popup
-                    closeButton={false}
-                    minWidth={240}
-                    maxWidth={240}
-                    className="map-popup"
-                  >
-                    {school.socialReason}
-                    <Link to={`/app/school/${school.id}`}>
-                      <FiArrowRight size={20} color="#ffffff" />
-                    </Link>
-                  </Popup>
-                </Marker>
+                <>
+                  {(() => (
+                    <Marker
+                      key={school.id}
+                      icon={
+                        Number(school.indications) > 3
+                          ? MapIconElevate
+                          : MapIconMarket
+                      }
+                      position={[school.longitudeSchool, school.latitudeSchool]}
+                    >
+                      <Popup
+                        closeButton={false}
+                        minWidth={240}
+                        maxWidth={240}
+                        className="map-popup"
+                      >
+                        {school.socialReason}
+                        <Link to={`/app/school/${school.id}`}>
+                          <FiArrowRight size={20} color="#ffffff" />
+                        </Link>
+                      </Popup>
+                    </Marker>
+                  ))()}
+                </>
               )}
             </>
           ))}

@@ -14,7 +14,7 @@
 }
 
 #page-map .map-popup .leaflet-popup-content {
-  color: #01ada9;
+  color: #4D6F80;
   font-size: 2rem;
   font-weight: bold;
   margin: 0.8rem 1.2rem;
@@ -24,8 +24,10 @@
   align-items: center;
 }
 
+
 #page-map .map-popup .leaflet-popup-content a {
   width: 40px;
+  min-width: 40px;
   height: 40px;
   background: linear-gradient(329.54deg, #67e093 0%, #01ada9 100%);
   border-radius: 12px;
