@@ -73,6 +73,7 @@ const SchoolShow: React.FC = () => {
         <MapSchool
           latitude={school.latitudeSchool}
           longitude={school.longitudeSchool}
+          indication={school.indications}
         />
 
         <Divider />

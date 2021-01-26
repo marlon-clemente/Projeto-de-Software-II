@@ -24,7 +24,6 @@
   align-items: center;
 }
 
-
 #page-map .map-popup .leaflet-popup-content a {
   width: 40px;
   min-width: 40px;
@@ -60,6 +59,26 @@
   right: 2.6rem;
   bottom: 2.6rem;
 }
+#page-map .help-popup {
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 10;
+  color: white;
+  background:  linear-gradient(360deg, #10428C -8.75%, #8E55D8 112.5%);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  cursor: pointer;
+
+  width: 60px;
+  height: 60px;
+  border-radius: 20px;
+
+  right: 2.6rem;
+  bottom: 10.6rem;
+}
 
 #page-map .my-location-popup-info {
   position: absolute;
@@ -79,4 +98,87 @@
 
   right: 10rem;
   bottom: 2.6rem;
+}
+
+#page-map .popup-help {
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9;
+
+  background: linear-gradient(360deg, #10428C -8.75%, #8E55D8 112.5%);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  width: 255px;
+  height: 60px;
+  border-radius: 20px;
+
+  right: 10rem;
+  bottom: 10.6rem;
+}
+
+.Modal {
+  margin: auto;
+  max-width: 680px;
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+  outline: none;
+  border-radius: 20px;
+  color:#000000;
+
+  background: rgba(255, 255, 255);
+  box-shadow:0 0 0 5000px rgba(0, 0, 0, 0.75);
+  padding: 2.6rem 2.6rem;
+}
+
+.Modal .modal-body {
+  height: 60%;
+  padding: 1.6rem 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Modal .modal-body span {
+  font-weight: 500;
+  font-size: 2.0rem;
+  margin-bottom: 1.8rem;
+}
+
+.Modal .modal-body .list{
+  margin: 1.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Modal .modal-body .list span{
+  font-size: 1.8rem;
+}
+.Modal .modal-body .list img{
+  margin-right: 1.8rem;
+}
+
+.Overlay {
+  margin: 1.8rem;
+  position: absolute;
+  z-index: +10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }

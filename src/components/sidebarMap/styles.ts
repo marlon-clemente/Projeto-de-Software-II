@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ContainerSidebarMap = styled.div`
   display: flex;
@@ -21,14 +21,14 @@ export const ContainerSidebarMap = styled.div`
     img {
       height: 3.5rem;
     }
-    
-    .location-header{
+
+    .location-header {
       align-items: flex-end;
       display: flex;
       flex-direction: column;
       line-height: 2.4rem;
       margin-left: 1.6rem;
-      
+
       strong {
         font-family: Ubuntu;
         font-weight: 800;
@@ -40,8 +40,7 @@ export const ContainerSidebarMap = styled.div`
     }
   } /* [end] - header-sidebar */
 
-
-  .page-show-content{
+  .page-show-content {
     width: 100%;
     height: 100%;
   }
@@ -51,7 +50,7 @@ export const ContainerSidebarMap = styled.div`
     flex-direction: column;
     width: 60%;
 
-    .search-selected{
+    .search-selected {
       display: flex;
       align-items: center;
       background: #ffffff;
@@ -59,7 +58,7 @@ export const ContainerSidebarMap = styled.div`
       width: 100%;
       padding: 0 1.6rem;
       border-radius: 12px 12px 0px 0px;
-      
+
       filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
       input {
@@ -68,7 +67,7 @@ export const ContainerSidebarMap = styled.div`
         color: #c3c3c3;
         border: none;
 
-        :focus{
+        :focus {
           outline: none;
         }
       }
@@ -78,10 +77,9 @@ export const ContainerSidebarMap = styled.div`
           cursor: pointer;
         }
       }
-
     }
 
-    .searchInput{
+    .searchInput {
       display: flex;
       align-items: center;
       background: #ffffff;
@@ -89,7 +87,7 @@ export const ContainerSidebarMap = styled.div`
       width: 100%;
       padding: 0 1.6rem;
       border-radius: 12px;
-      
+
       filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
       input {
@@ -98,18 +96,18 @@ export const ContainerSidebarMap = styled.div`
         color: #c3c3c3;
         border: none;
 
-        :focus{
+        :focus {
           outline: none;
         }
       }
     }
   } /* [end] - search */
 
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     .header-sidebar {
       display: flex;
-      
-      .location-header{
+
+      .location-header {
         display: none;
       }
     }
